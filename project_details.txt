@@ -1,12 +1,78 @@
 ***************************************************************************************************************************
 #STEP 1
 
+	Let's initialise Git for StockSense:
+	git init
+	git config --global user.name "meetamitvyas"
+	git config --global user.email "your-github-email@gmail.com"
+	
+	Then create a .gitignore file:
+	New-Item .gitignore
+	code .gitignore
+	
+	Add these lines to .gitignore:
+	venv/
+	__pycache__/
+	*.pyc
+	*.pkl
+	data/
+	mlruns/
+	Save with Ctrl+S.
+	Then our first commit:
+	git add .
+	git commit -m "Initial commit - StockSense project setup"
+	
+	Tell me when done.
+	
+	ERROR:
+			(venv) PS C:\ML-Projects\stocksense> git add .
+		fatal: detected dubious ownership in repository at 'C:/ML-Projects/stocksense'
+		'C:/ML-Projects/stocksense' is owned by:
+				BUILTIN/Administrators (S-1-5-32-544)
+		but the current user is:
+				Amit/avyas (S-1-5-21-2842314889-1227932805-4211517602-1002)
+		To add an exception for this directory, call:
+				git config --global --add safe.directory C:/ML-Projects/stocksense
+				
+	FIX: 
+	        Simple fix — just run the command Git is suggesting:
+			git config --global --add safe.directory C:/ML-Projects/stocksense
+			
+			Then try again:
+			git add .
+			git commit -m "Initial commit - StockSense project setup"
+
 ***************************************************************************************************************************
 #STEP 2
-
+		Now connect your local project to GitHub. In your VS Code terminal type these one at a time:
+		git branch -M main
+		git remote add origin https://github.com/meetamitvyas/stocksense.git
+		git push -u origin main
 ***************************************************************************************************************************
 #STEP 3
 
+	Perfect. StockSense is now on GitHub. ✅
+	Now let's install our first library — Prophet.
+	But first — what is Prophet, in plain English:
+	Prophet is a forecasting tool built by Facebook's data science team, released as open source in 2017. It was designed specifically for business time series data — things like daily stock prices, website traffic, sales figures.
+	
+	You give Prophet two things:
+
+	A column of dates (called ds — short for "datestamp")
+	A column of values (called y — the thing you want to predict)
+
+	Prophet automatically figures out:
+
+	Is the overall trend going up, down, or flat?
+	Are there weekly patterns?
+	Are there yearly patterns?
+	Are there any sudden change points (like a market crash)?
+
+	Then it predicts future values and gives you a confidence interval — a range saying "the price will probably be between X and Y."
+
+	Install Prophet:
+	pip install prophet
+	This will take 2-3 minutes. Tell me when it finishes.
 ***************************************************************************************************************************
 #STEP 4
 
